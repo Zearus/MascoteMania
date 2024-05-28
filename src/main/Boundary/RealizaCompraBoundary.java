@@ -34,7 +34,7 @@ public class RealizaCompraBoundary {
             System.out.println();
             } else if (retorno == 404) {
                 System.out.println("Produto não encontrado");
-            } else if (retorno == 400) {
+            } else if (retorno == 409) {
                 System.out.println("Quantidade maior que o estoque");
             }
         }

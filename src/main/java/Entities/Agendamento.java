@@ -69,3 +69,4 @@ public class Agendamento {
     public void setPreco(float preco) {
         this.preco = preco;
     }
+}

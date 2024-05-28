@@ -7,12 +7,6 @@ public class Estoque {
 
     public Estoque() {
         estoque = new HashMap<>();
-        estoque.put("Ração", 10);
-        estoque.put("Brinquedo", 10);
-        estoque.put("Remédio", 10);
-        estoque.put("Cama", 10);
-        estoque.put("Coleira", 10);
-        estoque.put("Peitoral", 10);
     }
 
     public void adicionarProduto(String produto, int quantidade) {
@@ -22,7 +16,6 @@ public class Estoque {
             estoque.put(produto, quantidade);
         }
     }
-
 
     public void removerProduto(String produto, int quantidade) {
         if (estoque.containsKey(produto)) {
@@ -34,6 +27,13 @@ public class Estoque {
             }
         } else {
             System.out.println("Produto não encontrado no estoque.");
+        }
+    }
+
+    public void listarEstoque() {
+        System.out.println("Estoque:");
+        for (String produto : estoque.keySet()) {
+            System.out.println(produto + ": " + estoque.get(produto));
         }
     }
 }

@@ -2,12 +2,14 @@ package Control;
 
 import Entities.Pedido;
 import Entities.Cliente;
+import Entities.Estoque;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
 
     public static final Scanner scanner = new Scanner(System.in);
+    public static final Estoque estoque = new Estoque();
     private static Cliente cliente1;
     private static Cliente cliente2;
     private static Cliente cliente3;
@@ -16,18 +18,6 @@ public class Main {
         System.out.println("Mascote Mania.");
 
         popula();
-
-        // System.out.println("Cliente: " + cliente1.getPrimeiroNome());
-        // System.out.println("Pedidos: ");
-        // for (Pedido pedido : cliente1.getPedidos()) {
-        //     System.out.println("ID: " + pedido.getId());
-        //     System.out.println("Produto: " + pedido.getProduto());
-        //     System.out.println("Quantidade: " + pedido.getQuantidade());
-        //     System.out.println("Valor: " + pedido.getPreco());
-        //     System.out.println("Status: " + pedido.getStatus());
-        // }
-
-        // System.out.println("Pedido1: " + pedido1.getId());
 
         boolean exec = true;
 
@@ -89,14 +79,24 @@ public class Main {
     }
 
     public static void popula() {
+
+        estoque.adicionarProduto("Ração", 10);
+        estoque.adicionarProduto("Brinquedo", 10);
+        estoque.adicionarProduto("Remédio", 10);
+        estoque.adicionarProduto("Cama", 10);
+        estoque.adicionarProduto("Coleira", 10);
+
         Pedido pedido1 = new Pedido(1, "Ração", 2, 50.0, "Em andamento");
         Pedido pedido2 = new Pedido(2, "Brinquedo", 1, 30.0, "Entregue");
         Pedido pedido3 = new Pedido(3, "Cama", 1, 100.0, "Em transporte");
+        Pedido pedido4 = new Pedido(4, "Ração", 2, 50.0, "Em andamento");
+
 
         ArrayList<Pedido> pedidos = new ArrayList<>();
         pedidos.add(pedido1);
         pedidos.add(pedido2);
         pedidos.add(pedido3);
+        pedidos.add(pedido4);
 
         cliente1 = new Cliente("1", "senha1", "João", "Silva", pedidos);
         cliente2 = new Cliente("2", "senha2", "Maria", "Santos", pedidos);

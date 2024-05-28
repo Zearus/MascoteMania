@@ -2,49 +2,40 @@ package Control;
 
 import Entities.Cliente;
 import Boundary.CancelarPedidoBoundary;
+import Entities.Estoque;
 
 public class CancelarPedidoControl {
-    public CancelarPedidoControl() {
-        // cancelarPedido(Cliente cliente);
-    }
+    public CancelarPedidoControl() {}
 
     public void cancelarPedido(Cliente cliente) {
         CancelarPedidoBoundary cancelarPedidoBoundary = new CancelarPedidoBoundary();
-        cancelarPedidoBoundary.cancelarPedido(cliente, Main.scanner);
+        cancelarPedidoBoundary.cancelarPedido(cliente, Main.scanner, Main.estoque);
     }
 
-    public int cancelaPedido(Cliente cliente, int idPedido) {
+    public int cancelaPedido(Cliente cliente, int idPedido, Estoque estoque) {
         for (int i = 0; i < cliente.getPedidos().size(); i++) {
             if (cliente.getPedidos().get(i).getId() == idPedido) {
                 if (cliente.getPedidos().get(i).getStatus().equals("Entregue")) {
                     return 400;
                 } else if (cliente.getPedidos().get(i).getStatus().equals("Em Transporte")) {
                     return 400;
+                } else if (cliente.getPedidos().get(i).getStatus().equals("Cancelado")) {
+                    return 409;
                 }
                 
-                cliente.getPedidos().remove(i);
-                return 200;
+                // Altera status do pedido para cancelado.
+                cliente.getPedidos().get(i).setStatus("Cancelado");
+
+                // Adiciona produtos do pedido cancelado ao estoque.
+                estoque.adicionarProduto(cliente.getPedidos().get(i).getProduto(), cliente.getPedidos().get(i).getQuantidade());
+
+                System.out.println("Produto retornado ao estoque.");
+                System.out.println("Veja o estoque:\n");
+                estoque.listarEstoque();
+
+                return 200; // Pedido deletado
             }
         }
-        return 404;
+        return 404; // Pedido não encontrado
     }
 }
-
-        // for (int i = 0; i < cliente.getPedidos().size(); i++) {
-        //     if (cliente.getPedidos().get(i).getId() == id) {
-        //         if (cliente.getPedidos().get(i).getStatus().equals("Entregue")) {
-        //             System.out.println("Pedido já entregue, não pode ser cancelado.");
-        //             break;
-        //         } else if (cliente.getPedidos().get(i).getStatus().equals("Em Transporte")) {
-        //             System.out.println("Pedido em transporte, não pode ser cancelado.");
-        //             break;
-        //         }
-                
-        //         cliente.getPedidos().remove(i);
-        //         System.out.println("Pedido cancelado.");
-        //         break;
-        //     }
-        //     else {
-        //         System.out.println("Pedido não encontrado.");
-        //     }
-        // }

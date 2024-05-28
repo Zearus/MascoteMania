@@ -18,7 +18,7 @@ public class CancelarPedidoControlTest {
     @BeforeEach
     public void setUp() {
         control = new CancelarPedidoControl();
-        estoque = new Estoque(); // Simulando um estoque como definido na main.
+        estoque = new Estoque();
         estoque.adicionarProduto("Ração", 10);
         estoque.adicionarProduto("Brinquedo", 10);
 

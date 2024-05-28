@@ -50,13 +50,11 @@ public class Main {
                     if (opcao_cliente == 1) {
                         RealizaCompraControl realizaControl = new RealizaCompraControl(); 
                         realizaControl.realizaCompra(cliente1);
-                        // RealizaCompraControl realizaCompraControl = new RealizaCompraControl();
                     } else if (opcao_cliente == 2) {
                         // AgendarServicoControl agendarServicoControl = new AgendarServicoControl();
                     } else if (opcao_cliente == 3) {
                         CancelarPedidoControl cancelaControl = new CancelarPedidoControl();
                         cancelaControl.cancelarPedido(cliente1);
-                        // cancelaControl.cancelarPedido(cliente1);
                     } else if (opcao_cliente == 4) {
                         exec = false;
                     } else {

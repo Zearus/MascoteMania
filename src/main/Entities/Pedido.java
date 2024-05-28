@@ -1,4 +1,4 @@
-package main.Entities;
+package Entities;
 
 public class Pedido {
     private int id;

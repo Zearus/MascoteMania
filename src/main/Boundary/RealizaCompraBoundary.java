@@ -4,7 +4,6 @@ import java.util.Scanner;
 import Entities.Cliente;
 import Control.RealizaCompraControl;
 import Entities.Estoque;
-import Entities.Pedido;
 
 public class RealizaCompraBoundary {
     public RealizaCompraBoundary() {}

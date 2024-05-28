@@ -41,6 +41,8 @@ public class Main {
                     int opcao_cliente = opcoesCliente();
                     
                     if (opcao_cliente == 1) {
+                        RealizaCompraControl realizaControl = new RealizaCompraControl(); 
+                        realizaControl.realizaCompra(cliente1);
                         // RealizaCompraControl realizaCompraControl = new RealizaCompraControl();
                     } else if (opcao_cliente == 2) {
                         // AgendarServicoControl agendarServicoControl = new AgendarServicoControl();

@@ -21,6 +21,10 @@ public class Cliente {
         return this.id;
     }
 
+    public int getTamanhoPedidos() {
+        return this.pedidos.size();
+    }
+
     public String getSenha() {
         return this.senha;
     }
